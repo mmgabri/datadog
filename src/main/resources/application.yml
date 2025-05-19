@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: local
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+
+management:
+  datadog:
+    metrics:
+      export:
+        apiKey: b194cdeecc9e1e62318497747e54eb61
+        step: 5s
+        uri: https://us5.datadoghq.com/
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus

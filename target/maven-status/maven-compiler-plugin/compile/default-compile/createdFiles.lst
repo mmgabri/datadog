@@ -1,0 +1,7 @@
+br\com\mmgabri\metrics\MetricsService.class
+br\com\mmgabri\metrics\MetricsConfig.class
+br\com\mmgabri\AutorizadorAplication.class
+br\com\mmgabri\metrics\MetricUtils.class
+br\com\mmgabri\Controller.class
+br\com\mmgabri\metrics\MetricsServiceImpl.class
+br\com\mmgabri\ExecuteService.class
