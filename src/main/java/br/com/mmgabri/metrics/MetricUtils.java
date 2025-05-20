@@ -28,6 +28,8 @@ public final class MetricUtils {
             metricsService.summary(
                     metricName,
                     startTime,
+                    "region", getRegion(),
+                    "region", getRegion(),
                     "transaction_tye", getTag(),
                     "protocol_type", getTag(),
                     "product_name", getTag(),
@@ -41,8 +43,16 @@ public final class MetricUtils {
     }
 
     public static String getTag() {
-        int randomAscii = ThreadLocalRandom.current().nextInt(65, 91);
-        return Character.toString((char) randomAscii);
+        String options = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123";
+        int index = ThreadLocalRandom.current().nextInt(options.length());
+        return String.valueOf(options.charAt(index));
+    }
+
+
+    public static String getRegion() {
+        String[] regions = {"us-east1", "ap-east1", "eu-east1"};
+        int index = ThreadLocalRandom.current().nextInt(regions.length);
+        return regions[index];
     }
 
 }

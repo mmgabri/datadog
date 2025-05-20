@@ -18,10 +18,10 @@ public class ExecuteService {
         Random random = new Random();
         int chance = random.nextInt(100);
 
-        if (chance < 10) {
+        if (chance < 70) {
             return "00";
         } else {
-            int numero = 1 + random.nextInt(10000);
+            int numero = 1 + random.nextInt(30);
             return String.format("%02d", numero);
         }
     }
