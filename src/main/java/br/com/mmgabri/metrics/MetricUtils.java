@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.OffsetDateTime;
+import java.util.concurrent.ThreadLocalRandom;
 
 public final class MetricUtils {
     private static final Logger logger = LoggerFactory.getLogger(MetricUtils.class);
@@ -22,14 +23,15 @@ public final class MetricUtils {
 
 
     public static void incrementMetric(MetricsService metricsService, String metricName, String status, OffsetDateTime startTime) {
+
         try {
             metricsService.summary(
                     metricName,
                     startTime,
-                    "transaction_tye", "CL",
-                    "protocol_type", "MQ",
-                    "product_name", "COMPRA_NACIONAL_COM_CHIP_SENHA",
-                    "operation_name", "DEBITO_COM_SEGURANCA",
+                    "transaction_tye", getTag(),
+                    "protocol_type", getTag(),
+                    "product_name", getTag(),
+                    "operation_name", getTag(),
                     "status", status,
                     "app", "autorizador");
         } catch (Exception e) {
@@ -37,4 +39,10 @@ public final class MetricUtils {
             throw new RuntimeException(e);
         }
     }
+
+    public static String getTag() {
+        int randomAscii = ThreadLocalRandom.current().nextInt(65, 91);
+        return Character.toString((char) randomAscii);
+    }
+
 }

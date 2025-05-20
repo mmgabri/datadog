@@ -10,18 +10,18 @@ import java.util.Random;
 public class ExecuteService {
 
     public Mono<String> execute(long duration) {
-        return Mono.just(gerarReturnCode())
+        return Mono.just(getReturnCode())
                 .delayElement(Duration.ofMillis(duration));
     }
 
-    public String gerarReturnCode() {
+    public String getReturnCode() {
         Random random = new Random();
         int chance = random.nextInt(100);
 
-        if (chance < 70) {
+        if (chance < 10) {
             return "00";
         } else {
-            int numero = 1 + random.nextInt(14);
+            int numero = 1 + random.nextInt(10000);
             return String.format("%02d", numero);
         }
     }
